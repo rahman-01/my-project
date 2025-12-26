@@ -1,0 +1,12 @@
+<div style="text-align:center">
+  <h1>Selamat datang di {{ title }}!</h1>
+  <h2>Status Backend:</h2>
+
+  @if (backendStatus) {
+    <pre>{{ backendStatus | json }}</pre>
+  } @else {
+    <p>Loading backend status...</p>
+  }
+</div>
+
+<router-outlet></router-outlet>
