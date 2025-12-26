@@ -5,7 +5,7 @@ app.get('/', (req, res) => {
     res.send('Backend Berhasil Dijalankan!');
 });
 
-const PORT = 5000;
-app.listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0', () => { // Tambahkan '0.0.0.0' di sini
+    console.log(`Server running on port ${PORT}`);
 });

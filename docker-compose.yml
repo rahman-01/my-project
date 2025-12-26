@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.8"
 
 services:
   backend:
@@ -9,8 +9,19 @@ services:
       - ./backend:/app
       - /app/node_modules
     command: npm run dev
+    environment:
+      - MONGO_URL=mongodb://db:27017/mydb
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: ng serve --host 0.0.0.0 --proxy-config proxy.conf.json
     depends_on:
-      - db
+      - backend
 
   db:
     image: mongo:latest

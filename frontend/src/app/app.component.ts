@@ -1,29 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Untuk *ngIf dan json pipe
-import { RouterOutlet } from '@angular/router'; // Untuk <router-outlet>
+import { Component } from '@angular/core';
+import { CommonModule, JsonPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Pastikan ini true
-  imports: [CommonModule, RouterOutlet], // Import *ngIf, json pipe, dan router-outlet di sini
+  standalone: true,
+  imports: [CommonModule, RouterModule, JsonPipe],
   templateUrl: './app.component.html',
-  styleUrls: [] // Kosongkan jika file .css tidak ditemukan
+  // styleUrls: ['./app.component.css'], // hapus sementara jika file CSS tidak ada
 })
-export class AppComponent implements OnInit {
-  title = 'frontend';
-  backendStatus: any = null;
+export class AppComponent {
+  title = 'My Project';       // properti untuk template
+  backendStatus: any = null;  // properti untuk template
 
-  constructor(private apiService: ApiService) {}
+  constructor(private api: ApiService) {}
 
   ngOnInit() {
-    this.apiService.getStatus().subscribe({
-      next: (data) => {
-        this.backendStatus = data;
-      },
-      error: (err) => {
-        console.error('Error:', err);
-      }
-    });
+    this.getBackendStatus();
+  }
+
+  getBackendStatus() {
+    if (this.api.getStatus) {
+      this.api.getStatus().subscribe({
+        next: (res: any) => (this.backendStatus = res),
+        error: (err: any) => (this.backendStatus = { error: err }),
+      });
+    } else {
+      this.backendStatus = { error: 'API Service belum ada getStatus()' };
+    }
   }
 }

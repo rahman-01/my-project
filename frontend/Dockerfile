@@ -10,11 +10,14 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Install Angular CLI global
+RUN npm install -g @angular/cli
+
 # Copy seluruh source code
 COPY . .
 
-# Expose port backend
-EXPOSE 5000
+# Expose port Angular
+EXPOSE 4200
 
-# Jalankan server
-CMD ["npm", "run", "dev"]
+# Jalankan Angular dev server dengan proxy
+CMD ["ng", "serve", "--host", "0.0.0.0", "--proxy-config", "proxy.conf.json"]

@@ -1,4 +1,8 @@
-// app.routes.ts
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+
 export const routes = [
-  // routes di sini
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '' },
 ];

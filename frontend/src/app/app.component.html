@@ -1,12 +1,10 @@
-<div style="text-align:center">
-  <h1>Selamat datang di {{ title }}!</h1>
-  <h2>Status Backend:</h2>
+<h1>Selamat datang di {{ title }}!</h1>
 
-  @if (backendStatus) {
-    <pre>{{ backendStatus | json }}</pre>
-  } @else {
-    <p>Loading backend status...</p>
-  }
+<!-- Menampilkan status backend jika tersedia -->
+<div *ngIf="backendStatus">
+  <h3>Backend Status:</h3>
+  <pre>{{ backendStatus | json }}</pre>
 </div>
 
+<!-- Tempat untuk halaman yang di-route -->
 <router-outlet></router-outlet>
