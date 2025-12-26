@@ -1,5 +1,5 @@
 # Gunakan image node resmi
-FROM node:18-alpine
+FROM node:18
 
 # Set folder kerja di dalam kontainer
 WORKDIR /app
@@ -15,4 +15,6 @@ COPY . .
 EXPOSE 5000
 
 # Jalankan aplikasi
-CMD ["node", "server.js"]
+CMD ["npm", "run", "dev"]
+
+
