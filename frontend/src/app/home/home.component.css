@@ -1,0 +1,244 @@
+/* General Styling */
+:host {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #ecf0f1; /* Light gray text */
+  background-color: #2c3e50; /* Dark blue background */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #34495e; /* Slightly lighter dark blue for content */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+/* Header */
+header {
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 3em;
+  color: #1abc9c; /* Greenish-blue for emphasis */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #bdc3c7;
+}
+
+/* Backend Status Card */
+.backend-status-card {
+  background-color: #2c3e50;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.backend-status-card h3 {
+  color: #f1c40f; /* Yellow for status */
+  margin-bottom: 10px;
+}
+
+.backend-status-card pre {
+  white-space: pre-wrap;
+  word-break: break-all;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+}
+
+.status-success {
+  background-color: #27ae60; /* Green */
+  color: #fff;
+}
+
+.status-error {
+  background-color: #e74c3c; /* Red */
+  color: #fff;
+}
+
+
+/* Signal List */
+.signal-list {
+  margin-bottom: 40px;
+}
+
+.signal-list h2 {
+  font-size: 2.5em;
+  color: #1abc9c;
+  margin-bottom: 30px;
+}
+
+.signals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.signal-card {
+  background-color: #2c3e50;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-left: 5px solid transparent; /* Default */
+  text-align: left;
+}
+
+.signal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.buy-signal {
+  border-left-color: #2ecc71; /* Green for BUY */
+}
+
+.sell-signal {
+  border-left-color: #e74c3c; /* Red for SELL */
+}
+
+.signal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #3d566e;
+  padding-bottom: 10px;
+}
+
+.crypto-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.signal-header h3 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #ecf0f1;
+  flex-grow: 1;
+}
+
+.signal-type {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.signal-type.buy {
+  background-color: #2ecc71; /* Green */
+  color: #fff;
+}
+
+.signal-type.sell {
+  background-color: #e74c3c; /* Red */
+  color: #fff;
+}
+
+.signal-details p {
+  margin: 8px 0;
+  font-size: 1.1em;
+  color: #bdc3c7;
+}
+
+.signal-details strong {
+  color: #ecf0f1;
+}
+
+.signal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #3d566e;
+}
+
+.signal-status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.signal-status.active {
+  background-color: #3498db; /* Blue */
+  color: #fff;
+}
+
+.signal-status.pending {
+  background-color: #f1c40f; /* Yellow */
+  color: #34495e;
+}
+
+.signal-status.closed {
+  background-color: #95a5a6; /* Gray */
+  color: #fff;
+}
+
+.profit-loss {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.profit-loss.positive {
+  color: #2ecc71; /* Green */
+}
+
+.profit-loss.negative {
+  color: #e74c3c; /* Red */
+}
+
+.no-signals {
+  font-size: 1.3em;
+  color: #bdc3c7;
+  padding: 30px;
+  background-color: #2c3e50;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+
+/* Footer */
+footer {
+  margin-top: 50px;
+  border-top: 1px solid #3d566e;
+  padding-top: 20px;
+}
+
+footer p {
+  color: #bdc3c7;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.2em;
+  }
+  .signal-list h2 {
+    font-size: 1.8em;
+  }
+  .signals-grid {
+    grid-template-columns: 1fr; /* Stack cards on small screens */
+  }
+  .container {
+    padding: 15px;
+  }
+}

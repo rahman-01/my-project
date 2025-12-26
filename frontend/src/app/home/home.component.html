@@ -1,0 +1,71 @@
+<div class="container">
+  <header>
+    <h1>Crypto Signals Dashboard</h1>
+    <p>Real-time insights for smarter trading.</p>
+  </header>
+
+  <section class="backend-status-card">
+    <h3>Backend Connection Status:</h3>
+    @if (backendStatus) {
+      <pre [class.status-success]="backendStatus.status === 'Success'" 
+           [class.status-error]="backendStatus.status !== 'Success'">
+        {{ backendStatus | json }}
+      </pre>
+    } @else {
+      <p>Connecting to backend...</p>
+    }
+  </section>
+
+  <section class="signal-list">
+    <h2>Live Signals</h2>
+    
+    @if (cryptoSignals.length > 0) {
+      <div class="signals-grid">
+        @for (signal of cryptoSignals; track signal.id) {
+          <div class="signal-card" 
+               [class.buy-signal]="signal.type === 'BUY'" 
+               [class.sell-signal]="signal.type === 'SELL'">
+            
+            <div class="signal-header">
+              <img [src]="signal.icon" alt="{{ signal.pair }}" class="crypto-icon">
+              <h3>{{ signal.pair }}</h3>
+              <span class="signal-type" 
+                    [class.buy]="signal.type === 'BUY'" 
+                    [class.sell]="signal.type === 'SELL'">
+                {{ signal.type }}
+              </span>
+            </div>
+
+            <div class="signal-details">
+              <p><strong>Entry:</strong> {{ signal.entryPrice }}</p>
+              <p><strong>Target:</strong> {{ signal.targetPrice }}</p>
+              <p><strong>Stop Loss:</strong> {{ signal.stopLoss }}</p>
+            </div>
+
+            <div class="signal-footer">
+              <span class="signal-status" 
+                    [class.active]="signal.status === 'ACTIVE'" 
+                    [class.pending]="signal.status === 'PENDING'" 
+                    [class.closed]="signal.status === 'CLOSED'">
+                {{ signal.status }}
+              </span>
+              <span class="profit-loss" 
+                    [class.positive]="signal.profitLoss.startsWith('+')" 
+                    [class.negative]="signal.profitLoss.startsWith('-')">
+                {{ signal.profitLoss }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="no-signals">
+        <p>No active signals at the moment. Check back soon!</p>
+      </div>
+    }
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Crypto Signal Pro. Minimalist Trading Interface.</p>
+  </footer>
+</div>
